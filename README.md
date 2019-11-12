@@ -53,7 +53,48 @@ public interface JsonPlaceHolderApi {
 ```
 - We are getting List of Posts from the JSON, hence List<Post> inside Call
 - `posts` is the relative url 
+### Creating the GET request
+```
+textViewResult = findViewById(R.id.text_view_result);
 
+Retrofit retrofit = new Retrofit.Builder()
+        .baseUrl("https://jsonplaceholder.typicode.com/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build();
+
+JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+
+Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
+
+call.enqueue(new Callback<List<Post>>() {
+    @Override
+    public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+
+        if(!response.isSuccessful()) {
+            textViewResult.setText("Code " + response.code());
+            return;
+        }
+
+        List<Post> posts = response.body();
+        for(Post post: posts) {
+            String content = "";
+            content += "ID: " + post.getId() + "\n";
+            content += "User ID: " + post.getUserId() + "\n";
+            content += "Title: " + post.getTitle() + "\n";
+            content += "Text: " + post.getText() + "\n\n";
+
+            textViewResult.append(content);
+        }
+
+    }
+
+    @Override
+    public void onFailure(Call<List<Post>> call, Throwable t) {
+        textViewResult.setText(t.getMessage());
+    }
+});
+
+```
 
 ### Resources
 - https://codinginflow.com/tutorials/android/retrofit/part-1-simple-get-request
