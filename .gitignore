@@ -1,0 +1,14 @@
+Retrofit/*.iml
+Retrofit/.gradle
+Retrofit/local.properties
+Retrofit/.idea/caches
+Retrofit/.idea/libraries
+Retrofit/.idea/modules.xml
+Retrofit/.idea/workspace.xml
+Retrofit/.idea/navEditor.xml
+Retrofit/.idea/assetWizardSettings.xml
+Retrofit/.DS_Store
+Retrofit/build
+Retrofit/captures
+Retrofit/.externalNativeBuild
+Retrofit/.cxx

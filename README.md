@@ -2,6 +2,7 @@
 Basic android app demonstrating Retrofit library <br />
 ### Installation
 ```
+com.squareup.retrofit2:converter-gson
 com.squareup.retrofit2:retrofit:2.6.2
 ```
 
