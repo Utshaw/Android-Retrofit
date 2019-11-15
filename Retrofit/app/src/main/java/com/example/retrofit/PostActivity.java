@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,8 +40,23 @@ public class PostActivity extends AppCompatActivity {
     private void createPost() {
 
 
+        /*Way-1
+        Post post = new Post(23, "Utshaw Title", "Utshaw Text");
 
+        Call<Post >call = jsonPlaceHolderApi.createPost(post);
+        */
+
+        /* Way - 2
         Call<Post >call = jsonPlaceHolderApi.createPost(23, "Utshaw Title", "Utshaw Text");
+        */
+
+        /* Way-3*/
+        Map<String, String> fields = new HashMap<>();
+        fields.put("userId", "25");
+        fields.put("title", "Utshaws title");
+
+
+        Call<Post> call = jsonPlaceHolderApi.createPost(fields);
 
         call.enqueue(new Callback<Post>() {
             @Override

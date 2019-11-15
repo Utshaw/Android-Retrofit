@@ -200,7 +200,19 @@ Purpoes of `@FormUrlEncoded`
 ```
  This will indicate that the request will have its MIME type (a header field that identifies the format of the body of an HTTP request or response) set to application/x-www-form-urlencoded and also that its field names and values will be UTF-8 encoded before being URI-encoded.
 ```
-
+## POST using Map
+```
+@FormUrlEncoded
+@POST("posts")
+Call<Post> createPost(@FieldMap Map<String, String> fields);
+```
+Call it:
+```
+Map<String, String> fields = new HashMap<>();
+fields.put("userId", "25");
+fields.put("title", "Utshaws title");
+Call<Post> call = jsonPlaceHolderApi.createPost(fields);
+```
 
 
 
