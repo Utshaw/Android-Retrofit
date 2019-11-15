@@ -96,5 +96,48 @@ call.enqueue(new Callback<List<Post>>() {
 
 ```
 
+## GET request with special relative path
+Url: https://jsonplaceholder.typicode.com/posts/1/comments <br />
+How to automate GET methods for different post number like (posts/2/comments) ?  <br />
+Code: 
+- use replacement keyword
+- use that in the method with annotation to indicate the parameter
+```
+@GET("posts/{id}/comments")
+Call<List<Comment>> getComments(@Path("id") int postId);
+```
+Calling this:
+```
+Call<List<Comment>> call = jsonPlaceHolderApi.getComments(3);
+```
+
+## GET request with parameters in the URL
+https://jsonplaceholder.typicode.com/posts?userId=1&_sort=id&_order=desc <br />
+```
+    @GET("posts")
+    Call<List<Post>> getUserPosts(@Query("userId") Integer[] userId,
+                                  @Query("_sort") String sort,
+                                  @Query("_order" ) String order);
+```
+Call this:
+```
+Call<List<Post>> call = jsonPlaceHolderApi.getUserPosts(new Integer[]{2, 3, 6}, "id", "desc");
+```
+## GET request with parameter as Map
+https://jsonplaceholder.typicode.com/posts?userId=1&_sort=id&_order=desc <br />
+```
+ @GET("posts")
+    Call<List<Post>> getUserPosts(@QueryMap Map<String, String> parameters);
+```
+Call this:
+```
+ Map<String, String> parameters = new HashMap<>();
+        parameters.put("userId", "1");
+        parameters.put("_sort", "id");
+        parameters.put("_order", "desc");
+
+```
+
+
 ### Resources
 - https://codinginflow.com/tutorials/android/retrofit/part-1-simple-get-request
