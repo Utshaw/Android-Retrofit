@@ -131,11 +131,22 @@ https://jsonplaceholder.typicode.com/posts?userId=1&_sort=id&_order=desc <br />
 ```
 Call this:
 ```
- Map<String, String> parameters = new HashMap<>();
+Map<String, String> parameters = new HashMap<>();
         parameters.put("userId", "1");
         parameters.put("_sort", "id");
         parameters.put("_order", "desc");
+Call<List<Post>> call = jsonPlaceHolderApi.getUserPosts(parameters);
 
+```
+## GET request with String URL
+https://jsonplaceholder.typicode.com/posts/1/comments <br />
+```
+@GET
+Call<List<Comment>> getComments(@Url String url);
+```
+Call this:
+```
+Call<List<Comment>> call = jsonPlaceHolderApi.getComments("posts/1/comments");
 ```
 
 

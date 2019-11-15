@@ -44,6 +44,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        Button getUrlStringBtn = findViewById(R.id.getUrlStringBtn);
+        getUrlStringBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, GetUrlStringActivity.class));
+            }
+        });
+
+
+
+
+
 
 
     }
