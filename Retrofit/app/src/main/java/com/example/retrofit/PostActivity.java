@@ -37,9 +37,9 @@ public class PostActivity extends AppCompatActivity {
 
     private void createPost() {
 
-        Post post = new Post(23, "Utshaw Title", "Utshaw Text");
 
-        Call<Post >call = jsonPlaceHolderApi.createPost(post);
+
+        Call<Post >call = jsonPlaceHolderApi.createPost(23, "Utshaw Title", "Utshaw Text");
 
         call.enqueue(new Callback<Post>() {
             @Override

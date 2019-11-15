@@ -149,7 +149,7 @@ Call this:
 Call<List<Comment>> call = jsonPlaceHolderApi.getComments("posts/1/comments");
 ```
 
-## POST 
+## POST , Sending JSON formatted data
 Base Url: https://jsonplaceholder.typicode.com/ <br />
 Post path: /posts <br >
 The server will return the post object that was sent to it and return id associated with that post
@@ -194,10 +194,16 @@ call.enqueue(new Callback<Post>() {
       textViewResult.setText(t.getMessage());
   }
 });
-
 ```
+## POST with MIME type: application/x-www-form-urlencoded
+Purpoes of `@FormUrlEncoded` 
+```
+ This will indicate that the request will have its MIME type (a header field that identifies the format of the body of an HTTP request or response) set to application/x-www-form-urlencoded and also that its field names and values will be UTF-8 encoded before being URI-encoded.
+```
+
 
 
 
 ### Resources
 - https://codinginflow.com/tutorials/android/retrofit/part-1-simple-get-request
+- https://code.tutsplus.com/tutorials/sending-data-with-retrofit-2-http-client-for-android--cms-27845
