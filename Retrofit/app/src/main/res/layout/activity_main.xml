@@ -35,5 +35,11 @@
         android:layout_height="wrap_content"
         android:text="URL as String GET request" />
 
+    <Button
+        android:id="@+id/postBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="POST request" />
+
 
 </LinearLayout>

@@ -13,7 +13,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class GetUrlSbubPathActivity extends AppCompatActivity {
+public class PostActivity extends AppCompatActivity {
 
     private TextView textViewResult;
     private JsonPlaceHolderApi jsonPlaceHolderApi;
@@ -32,38 +32,35 @@ public class GetUrlSbubPathActivity extends AppCompatActivity {
 
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        getComments();
-
-
+        createPost();
     }
 
-    private void getComments() {
+    private void createPost() {
 
-            Call<List<Comment>> call = jsonPlaceHolderApi.getComments(3);
+        Post post = new Post(23, "Utshaw Title", "Utshaw Text");
 
-        call.enqueue(new Callback<List<Comment>>() {
+        Call<Post >call = jsonPlaceHolderApi.createPost(post);
+
+        call.enqueue(new Callback<Post>() {
             @Override
-            public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
+            public void onResponse(Call<Post> call, Response<Post> response) {
                 if(!response.isSuccessful()) {
                     textViewResult.setText("Code " + response.code());
                     return;
                 }
+                Post postResponse = response.body();
 
-                List<Comment> comments = response.body();
-                for(Comment comment: comments) {
-                    String content = "";
-                    content += "Post ID: " + comment.getPostId() + "\n";
-                    content += "Comment ID: " + comment.getId() + "\n";
-                    content += "Name: " + comment.getName() + "\n";
-                    content += "Email: " + comment.getEmail() + "\n";
-                    content += "Body: " + comment.getCommentBody() + "\n\n";
+                String content = "Code: " + response.code() + "\n";
+                content += "Post ID: " + postResponse.getId() + "\n";
+                content += "User ID: " + postResponse.getUserId() + "\n";
+                content += "Title: " + postResponse.getTitle() + "\n";
+                content += "Body: " + postResponse.getText() + "\n\n";
 
-                    textViewResult.append(content);
-                }
+                textViewResult.setText(content);
             }
 
             @Override
-            public void onFailure(Call<List<Comment>> call, Throwable t) {
+            public void onFailure(Call<Post> call, Throwable t) {
                 textViewResult.setText(t.getMessage());
             }
         });

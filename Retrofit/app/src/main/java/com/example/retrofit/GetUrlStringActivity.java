@@ -21,7 +21,7 @@ public class GetUrlStringActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_url_string);
+        setContentView(R.layout.activity_get);
 
         textViewResult = findViewById(R.id.text_view_result);
 

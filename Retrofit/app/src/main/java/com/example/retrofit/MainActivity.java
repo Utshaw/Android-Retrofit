@@ -53,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        Button postBtn = findViewById(R.id.postBtn);
+        postBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PostActivity.class));
+            }
+        });
+
+
 
 
 

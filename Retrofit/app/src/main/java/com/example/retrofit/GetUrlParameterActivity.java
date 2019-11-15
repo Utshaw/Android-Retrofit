@@ -24,7 +24,7 @@ public class GetUrlParameterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_url_parameter);
+        setContentView(R.layout.activity_get);
 
         textViewResult = findViewById(R.id.text_view_result);
 
